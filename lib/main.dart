@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/PresentationLayer/authentication.screen.dart';
-import 'package:weather_app/Theme/app.theme.dart';
+
+import 'Theme/app.theme.dart';
+import 'presentationLayer/screens/authentication.screen.dart';
 
 void main() {
   runApp(const App());

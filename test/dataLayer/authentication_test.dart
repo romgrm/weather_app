@@ -47,7 +47,7 @@ void main() {
     });
 
     test(
-      "should return a User when it's logged",
+      "should return a User when logged is success",
       () async {
         // arrange
 

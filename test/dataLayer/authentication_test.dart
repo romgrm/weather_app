@@ -45,5 +45,24 @@ void main() {
 
       verify(() => _mockDioClient.post(path: "test")).called(1);
     });
+
+    test(
+      "should return a User when it's logged",
+      () async {
+        // arrange
+
+        when(
+          () => _mockDioClient.post(path: "test"),
+        ).thenAnswer((_) async => Future.value("called"));
+
+        _authenticationDataSourceImpl = AuthenticationDataSourceImpl(_mockDioClient);
+
+        // act
+        final result = await _authenticationDataSourceImpl.loggin(email, password);
+
+        // assert
+        expect(result, isA<UserDto>());
+      },
+    );
   });
 }

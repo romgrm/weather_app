@@ -21,3 +21,23 @@ flutter:
 
   uses-material-design: true
 
+  fonts:
+    - family: SF-Pro
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Bold.otf
+          weight: 800
+        - asset: assets/fonts/SF-Pro-Display-BoldItalic.otf
+          weight: 800
+        - asset: assets/fonts/SF-Pro-Display-Light.otf
+          weight: 600
+        - asset: assets/fonts/SF-Pro-Display-LightItalic.otf
+          weight: 600
+        - asset: assets/fonts/SF-Pro-Display-Regular.otf
+          weight: 500
+        - asset: assets/fonts/SF-Pro-Display-RegularItalic.otf
+          weight: 500
+        - asset: assets/fonts/SF-Pro-Display-Ultralight.otf
+          weight: 400
+        - asset: assets/fonts/SF-Pro-Display-UltralightItalic.otf
+          weight: 400
+        

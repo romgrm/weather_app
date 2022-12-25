@@ -26,12 +26,9 @@ class AppTheme {
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: AppColors.white,
     ),
-    buttonTheme: const ButtonThemeData(
-      highlightColor: Colors.transparent,
-      splashColor: Colors.transparent,
-    ),
-    cardTheme: CardTheme(color: lightColors.getSecondary()),
-    colorScheme: ColorScheme.light(primary: lightColors.getPrimary()),
+    // buttonTheme: ButtonThemeData(highlightColor: Colors.transparent, splashColor: Colors.transparent, buttonColor: lightColors.getThirdly()),
+    cardTheme: CardTheme(color: lightColors.getThirdly()),
+    colorScheme: ColorScheme.light(primary: lightColors.getThirdly()),
     scaffoldBackgroundColor: AppColors.white,
     textTheme: lightTextTheme,
   );
@@ -47,15 +44,15 @@ class AppTheme {
       titleTextStyle: TextStyle(color: lightColors.getPrimary(), fontSize: 16),
     ),
     bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: lightColors.getPrimary(),
+      backgroundColor: lightColors.getThirdly(),
     ),
     buttonTheme: const ButtonThemeData(
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
     ),
     cardTheme: CardTheme(color: lightColors.getSecondary()),
-    colorScheme: ColorScheme.dark(primary: lightColors.getPrimary()),
-    scaffoldBackgroundColor: lightColors.getPrimary(),
+    colorScheme: ColorScheme.dark(primary: darkColors.getThirdly()),
+    scaffoldBackgroundColor: lightColors.getThirdly(),
     textTheme: darkTextTheme,
   );
 

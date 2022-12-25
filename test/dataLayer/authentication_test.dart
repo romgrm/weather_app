@@ -39,7 +39,7 @@ void main() {
       _authenticationDataSourceImpl = AuthenticationDataSourceImpl(_mockDioClient);
 
       // act
-      await _authenticationDataSourceImpl.loggin(email, password);
+      await _authenticationDataSourceImpl.login(email, password);
 
       // assert
 
@@ -58,7 +58,7 @@ void main() {
         _authenticationDataSourceImpl = AuthenticationDataSourceImpl(_mockDioClient);
 
         // act
-        final result = await _authenticationDataSourceImpl.loggin(email, password);
+        final result = await _authenticationDataSourceImpl.login(email, password);
 
         // assert
         expect(result, isA<UserDto>());

@@ -13,16 +13,14 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   AuthenticationCubit(this.authenticationRepository) : super(Loading());
 
   Future<void> login(String email, String password) async {
-    try {
-      emit(const Loading());
+    emit(const Loading());
 
-      final user = await authenticationRepository.login(email, password);
+    final user = await authenticationRepository.login(email, password);
 
-      if (user != null) {
-        emit(OnSuccess(user: user));
-      }
-    } on RestException catch (e) {
-      emit(OnError(errorMessage: e.message));
+    if (user != null) {
+      emit(OnSuccess(user: user));
+    } else {
+      emit(OnError(errorMessage: RestException.restErrorUnauthorized));
     }
   }
 }

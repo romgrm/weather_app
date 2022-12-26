@@ -29,7 +29,7 @@ void main() {
         () => _mockDioClient.get(path: "https://api.openweathermap.org/data/2.5/forecast?", parameters: params),
       ).thenAnswer((_) async => Future.value([WeatherDayDto()]));
 
-      _weatherDataSource = WeatherDataSourceImpl();
+      _weatherDataSource = WeatherDataSourceImpl(_mockDioClient);
 
       // act
       final result = await _weatherDataSource.getWeatherForFiveDays();

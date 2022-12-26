@@ -26,34 +26,18 @@ void main() {
   setUp();
 
   group("test user loggin", () {
-    email = "test";
+    email = "test@test.fr";
     password = "test";
-
-    test("should post() method be called", () async {
-      // arrange
-
-      when(
-        () => _mockDioClient.post(path: "test"),
-      ).thenAnswer((_) async => Future.value("called"));
-
-      _authenticationDataSourceImpl = AuthenticationDataSourceImpl(_mockDioClient);
-
-      // act
-      await _authenticationDataSourceImpl.login(email, password);
-
-      // assert
-
-      verify(() => _mockDioClient.post(path: "test")).called(1);
-    });
 
     test(
       "should return a User when logged is success",
       () async {
         // arrange
+        final body = {"email": email, "password": password};
 
         when(
-          () => _mockDioClient.post(path: "test"),
-        ).thenAnswer((_) async => Future.value("called"));
+          () => _mockDioClient.post(path: "/auth", body: body),
+        ).thenAnswer((_) async => Future.value({"id": "1", "firstName": "Romain", "lastName": "Gréaume"}));
 
         _authenticationDataSourceImpl = AuthenticationDataSourceImpl(_mockDioClient);
 

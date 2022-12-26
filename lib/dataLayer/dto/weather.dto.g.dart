@@ -8,7 +8,7 @@ part of 'weather.dto.dart';
 
 _$_WeatherDto _$$_WeatherDtoFromJson(Map<String, dynamic> json) =>
     _$_WeatherDto(
-      id: json['id'] as String?,
+      id: json['id'] as int?,
       description: json['description'] as String?,
       iconId: json['iconId'] as String?,
     );

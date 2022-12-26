@@ -20,12 +20,9 @@ WeatherDayDto _$WeatherDayDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WeatherDayDto {
-  DateTime? get date => throw _privateConstructorUsedError;
-  double? get temperature => throw _privateConstructorUsedError;
-  double? get minTemperature => throw _privateConstructorUsedError;
-  double? get maxTemperature => throw _privateConstructorUsedError;
-  double? get temperatureFeels => throw _privateConstructorUsedError;
-  WeatherDto? get weatherDto => throw _privateConstructorUsedError;
+  DateTime? get dt_txt => throw _privateConstructorUsedError;
+  MainDto? get main => throw _privateConstructorUsedError;
+  List<WeatherDto>? get weather => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,15 +36,9 @@ abstract class $WeatherDayDtoCopyWith<$Res> {
           WeatherDayDto value, $Res Function(WeatherDayDto) then) =
       _$WeatherDayDtoCopyWithImpl<$Res, WeatherDayDto>;
   @useResult
-  $Res call(
-      {DateTime? date,
-      double? temperature,
-      double? minTemperature,
-      double? maxTemperature,
-      double? temperatureFeels,
-      WeatherDto? weatherDto});
+  $Res call({DateTime? dt_txt, MainDto? main, List<WeatherDto>? weather});
 
-  $WeatherDtoCopyWith<$Res>? get weatherDto;
+  $MainDtoCopyWith<$Res>? get main;
 }
 
 /// @nodoc
@@ -63,50 +54,35 @@ class _$WeatherDayDtoCopyWithImpl<$Res, $Val extends WeatherDayDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? date = freezed,
-    Object? temperature = freezed,
-    Object? minTemperature = freezed,
-    Object? maxTemperature = freezed,
-    Object? temperatureFeels = freezed,
-    Object? weatherDto = freezed,
+    Object? dt_txt = freezed,
+    Object? main = freezed,
+    Object? weather = freezed,
   }) {
     return _then(_value.copyWith(
-      date: freezed == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
+      dt_txt: freezed == dt_txt
+          ? _value.dt_txt
+          : dt_txt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      temperature: freezed == temperature
-          ? _value.temperature
-          : temperature // ignore: cast_nullable_to_non_nullable
-              as double?,
-      minTemperature: freezed == minTemperature
-          ? _value.minTemperature
-          : minTemperature // ignore: cast_nullable_to_non_nullable
-              as double?,
-      maxTemperature: freezed == maxTemperature
-          ? _value.maxTemperature
-          : maxTemperature // ignore: cast_nullable_to_non_nullable
-              as double?,
-      temperatureFeels: freezed == temperatureFeels
-          ? _value.temperatureFeels
-          : temperatureFeels // ignore: cast_nullable_to_non_nullable
-              as double?,
-      weatherDto: freezed == weatherDto
-          ? _value.weatherDto
-          : weatherDto // ignore: cast_nullable_to_non_nullable
-              as WeatherDto?,
+      main: freezed == main
+          ? _value.main
+          : main // ignore: cast_nullable_to_non_nullable
+              as MainDto?,
+      weather: freezed == weather
+          ? _value.weather
+          : weather // ignore: cast_nullable_to_non_nullable
+              as List<WeatherDto>?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $WeatherDtoCopyWith<$Res>? get weatherDto {
-    if (_value.weatherDto == null) {
+  $MainDtoCopyWith<$Res>? get main {
+    if (_value.main == null) {
       return null;
     }
 
-    return $WeatherDtoCopyWith<$Res>(_value.weatherDto!, (value) {
-      return _then(_value.copyWith(weatherDto: value) as $Val);
+    return $MainDtoCopyWith<$Res>(_value.main!, (value) {
+      return _then(_value.copyWith(main: value) as $Val);
     });
   }
 }
@@ -119,16 +95,10 @@ abstract class _$$_WeatherDayDtoCopyWith<$Res>
       __$$_WeatherDayDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DateTime? date,
-      double? temperature,
-      double? minTemperature,
-      double? maxTemperature,
-      double? temperatureFeels,
-      WeatherDto? weatherDto});
+  $Res call({DateTime? dt_txt, MainDto? main, List<WeatherDto>? weather});
 
   @override
-  $WeatherDtoCopyWith<$Res>? get weatherDto;
+  $MainDtoCopyWith<$Res>? get main;
 }
 
 /// @nodoc
@@ -142,38 +112,23 @@ class __$$_WeatherDayDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? date = freezed,
-    Object? temperature = freezed,
-    Object? minTemperature = freezed,
-    Object? maxTemperature = freezed,
-    Object? temperatureFeels = freezed,
-    Object? weatherDto = freezed,
+    Object? dt_txt = freezed,
+    Object? main = freezed,
+    Object? weather = freezed,
   }) {
     return _then(_$_WeatherDayDto(
-      date: freezed == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
+      dt_txt: freezed == dt_txt
+          ? _value.dt_txt
+          : dt_txt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      temperature: freezed == temperature
-          ? _value.temperature
-          : temperature // ignore: cast_nullable_to_non_nullable
-              as double?,
-      minTemperature: freezed == minTemperature
-          ? _value.minTemperature
-          : minTemperature // ignore: cast_nullable_to_non_nullable
-              as double?,
-      maxTemperature: freezed == maxTemperature
-          ? _value.maxTemperature
-          : maxTemperature // ignore: cast_nullable_to_non_nullable
-              as double?,
-      temperatureFeels: freezed == temperatureFeels
-          ? _value.temperatureFeels
-          : temperatureFeels // ignore: cast_nullable_to_non_nullable
-              as double?,
-      weatherDto: freezed == weatherDto
-          ? _value.weatherDto
-          : weatherDto // ignore: cast_nullable_to_non_nullable
-              as WeatherDto?,
+      main: freezed == main
+          ? _value.main
+          : main // ignore: cast_nullable_to_non_nullable
+              as MainDto?,
+      weather: freezed == weather
+          ? _value._weather
+          : weather // ignore: cast_nullable_to_non_nullable
+              as List<WeatherDto>?,
     ));
   }
 }
@@ -182,33 +137,29 @@ class __$$_WeatherDayDtoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_WeatherDayDto extends _WeatherDayDto {
   const _$_WeatherDayDto(
-      {this.date,
-      this.temperature,
-      this.minTemperature,
-      this.maxTemperature,
-      this.temperatureFeels,
-      this.weatherDto})
-      : super._();
+      {this.dt_txt, this.main, final List<WeatherDto>? weather})
+      : _weather = weather,
+        super._();
 
   factory _$_WeatherDayDto.fromJson(Map<String, dynamic> json) =>
       _$$_WeatherDayDtoFromJson(json);
 
   @override
-  final DateTime? date;
+  final DateTime? dt_txt;
   @override
-  final double? temperature;
+  final MainDto? main;
+  final List<WeatherDto>? _weather;
   @override
-  final double? minTemperature;
-  @override
-  final double? maxTemperature;
-  @override
-  final double? temperatureFeels;
-  @override
-  final WeatherDto? weatherDto;
+  List<WeatherDto>? get weather {
+    final value = _weather;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'WeatherDayDto(date: $date, temperature: $temperature, minTemperature: $minTemperature, maxTemperature: $maxTemperature, temperatureFeels: $temperatureFeels, weatherDto: $weatherDto)';
+    return 'WeatherDayDto(dt_txt: $dt_txt, main: $main, weather: $weather)';
   }
 
   @override
@@ -216,23 +167,15 @@ class _$_WeatherDayDto extends _WeatherDayDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WeatherDayDto &&
-            (identical(other.date, date) || other.date == date) &&
-            (identical(other.temperature, temperature) ||
-                other.temperature == temperature) &&
-            (identical(other.minTemperature, minTemperature) ||
-                other.minTemperature == minTemperature) &&
-            (identical(other.maxTemperature, maxTemperature) ||
-                other.maxTemperature == maxTemperature) &&
-            (identical(other.temperatureFeels, temperatureFeels) ||
-                other.temperatureFeels == temperatureFeels) &&
-            (identical(other.weatherDto, weatherDto) ||
-                other.weatherDto == weatherDto));
+            (identical(other.dt_txt, dt_txt) || other.dt_txt == dt_txt) &&
+            (identical(other.main, main) || other.main == main) &&
+            const DeepCollectionEquality().equals(other._weather, _weather));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, date, temperature,
-      minTemperature, maxTemperature, temperatureFeels, weatherDto);
+  int get hashCode => Object.hash(
+      runtimeType, dt_txt, main, const DeepCollectionEquality().hash(_weather));
 
   @JsonKey(ignore: true)
   @override
@@ -250,29 +193,20 @@ class _$_WeatherDayDto extends _WeatherDayDto {
 
 abstract class _WeatherDayDto extends WeatherDayDto {
   const factory _WeatherDayDto(
-      {final DateTime? date,
-      final double? temperature,
-      final double? minTemperature,
-      final double? maxTemperature,
-      final double? temperatureFeels,
-      final WeatherDto? weatherDto}) = _$_WeatherDayDto;
+      {final DateTime? dt_txt,
+      final MainDto? main,
+      final List<WeatherDto>? weather}) = _$_WeatherDayDto;
   const _WeatherDayDto._() : super._();
 
   factory _WeatherDayDto.fromJson(Map<String, dynamic> json) =
       _$_WeatherDayDto.fromJson;
 
   @override
-  DateTime? get date;
+  DateTime? get dt_txt;
   @override
-  double? get temperature;
+  MainDto? get main;
   @override
-  double? get minTemperature;
-  @override
-  double? get maxTemperature;
-  @override
-  double? get temperatureFeels;
-  @override
-  WeatherDto? get weatherDto;
+  List<WeatherDto>? get weather;
   @override
   @JsonKey(ignore: true)
   _$$_WeatherDayDtoCopyWith<_$_WeatherDayDto> get copyWith =>

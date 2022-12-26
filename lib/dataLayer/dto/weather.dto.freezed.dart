@@ -20,7 +20,7 @@ WeatherDto _$WeatherDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WeatherDto {
-  String? get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get iconId => throw _privateConstructorUsedError;
 
@@ -36,7 +36,7 @@ abstract class $WeatherDtoCopyWith<$Res> {
           WeatherDto value, $Res Function(WeatherDto) then) =
       _$WeatherDtoCopyWithImpl<$Res, WeatherDto>;
   @useResult
-  $Res call({String? id, String? description, String? iconId});
+  $Res call({int? id, String? description, String? iconId});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$WeatherDtoCopyWithImpl<$Res, $Val extends WeatherDto>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -81,7 +81,7 @@ abstract class _$$_WeatherDtoCopyWith<$Res>
       __$$_WeatherDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String? description, String? iconId});
+  $Res call({int? id, String? description, String? iconId});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class __$$_WeatherDtoCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -125,7 +125,7 @@ class _$_WeatherDto implements _WeatherDto {
       _$$_WeatherDtoFromJson(json);
 
   @override
-  final String? id;
+  final int? id;
   @override
   final String? description;
   @override
@@ -167,7 +167,7 @@ class _$_WeatherDto implements _WeatherDto {
 
 abstract class _WeatherDto implements WeatherDto {
   const factory _WeatherDto(
-      {final String? id,
+      {final int? id,
       final String? description,
       final String? iconId}) = _$_WeatherDto;
 
@@ -175,7 +175,7 @@ abstract class _WeatherDto implements WeatherDto {
       _$_WeatherDto.fromJson;
 
   @override
-  String? get id;
+  int? get id;
   @override
   String? get description;
   @override

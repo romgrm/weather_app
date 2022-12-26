@@ -8,23 +8,20 @@ part of 'weather_day.dto.dart';
 
 _$_WeatherDayDto _$$_WeatherDayDtoFromJson(Map<String, dynamic> json) =>
     _$_WeatherDayDto(
-      date:
-          json['date'] == null ? null : DateTime.parse(json['date'] as String),
-      temperature: (json['temperature'] as num?)?.toDouble(),
-      minTemperature: (json['minTemperature'] as num?)?.toDouble(),
-      maxTemperature: (json['maxTemperature'] as num?)?.toDouble(),
-      temperatureFeels: (json['temperatureFeels'] as num?)?.toDouble(),
-      weatherDto: json['weatherDto'] == null
+      dt_txt: json['dt_txt'] == null
           ? null
-          : WeatherDto.fromJson(json['weatherDto'] as Map<String, dynamic>),
+          : DateTime.parse(json['dt_txt'] as String),
+      main: json['main'] == null
+          ? null
+          : MainDto.fromJson(json['main'] as Map<String, dynamic>),
+      weather: (json['weather'] as List<dynamic>?)
+          ?.map((e) => WeatherDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_WeatherDayDtoToJson(_$_WeatherDayDto instance) =>
     <String, dynamic>{
-      'date': instance.date?.toIso8601String(),
-      'temperature': instance.temperature,
-      'minTemperature': instance.minTemperature,
-      'maxTemperature': instance.maxTemperature,
-      'temperatureFeels': instance.temperatureFeels,
-      'weatherDto': instance.weatherDto,
+      'dt_txt': instance.dt_txt?.toIso8601String(),
+      'main': instance.main,
+      'weather': instance.weather,
     };

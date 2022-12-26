@@ -6,7 +6,7 @@ part 'weather.dto.g.dart';
 @freezed
 class WeatherDto with _$WeatherDto {
   const factory WeatherDto({
-    String? id,
+    int? id,
     String? description,
     String? iconId,
   }) = _WeatherDto;

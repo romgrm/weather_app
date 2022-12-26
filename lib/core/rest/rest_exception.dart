@@ -14,7 +14,7 @@ class RestException {
   static const String restErrorTimeout = "La connexion a été perdue";
   static const String restErrorNoConnection = "Pas de connexion internet";
   static const String restErrorNotFound = "La donnée n'a pas été trouvée";
-  static const String restErrorUnauthorized = "Votre session a expirée, veuillez vous reconnecter";
+  static const String restErrorUnauthorized = "Email ou mot de passe incorrect, veuillez réessayer";
   static const String restErrorForbidden = "Vous n'êtes pas autorisé à consulter cette donnée";
   static const String restErrorUnexpected = "Oups, une erreur est survenue";
   static const String restErrorData = "Erreur de données";

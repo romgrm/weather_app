@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:weather_app/core/rest/rest_exception.dart';
 
 class RestManager {
@@ -26,8 +27,29 @@ class RestManager {
     Map<String, dynamic>? parameters,
   }) async {
     try {
-      final response = await dio.post(path, data: body, queryParameters: parameters);
-      return response.data;
+      Map<String, String> account = {"email": "test@test.fr", "password": "test"};
+      String email = "test@test.fr";
+      String password = "test";
+      bool isLoginSucess = false;
+
+      // body?.forEach((key, value) {
+      //   if (key == "email") {
+      //     if (value == "test@test.fr") {
+      //       isLoginSucess = true;
+      //     }
+      //     isLoginSucess = false;
+      //   } else {
+      //     if (value == "test") {
+      //       isLoginSucess = true;
+      //     }
+      //     isLoginSucess = false;
+      //   }
+      // });
+      if (mapEquals(account, body)) {
+        return {"id": "1", "firstName": "Romain", "lastName": "Gréaume"};
+      } else {
+        return null;
+      }
     } catch (e) {
       throw RestException.parseDioException(e);
     }

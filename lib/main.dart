@@ -5,10 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/core/di/service_locator.dart';
 import 'package:weather_app/dataLayer/repositories/authentication.repository.dart';
 import 'package:weather_app/presentationLayer/bloc/authentication.cubit.dart';
+import 'package:weather_app/presentationLayer/bloc/weather.cubit.dart';
 import 'package:weather_app/presentationLayer/screens/home.screen.dart';
 import 'package:weather_app/theme/colors.cubit.dart';
 
 import 'Theme/app.theme.dart';
+import 'dataLayer/repositories/weather.repository.dart';
 import 'presentationLayer/screens/authentication.screen.dart';
 
 void main() {
@@ -26,12 +28,20 @@ class AppProviders extends StatefulWidget {
 class _AppProvidersState extends State<AppProviders> {
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => AuthenticationRepository(),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(
+          create: (context) => AuthenticationRepository(),
+        ),
+        RepositoryProvider(
+          create: (context) => WeatherRepository(),
+        ),
+      ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => ColorsCubit()),
           BlocProvider(create: (context) => AuthenticationCubit(context.read<AuthenticationRepository>())),
+          BlocProvider(create: (context) => WeatherCubit(context.read<WeatherRepository>())),
         ],
         child: const App(),
       ),
@@ -83,7 +93,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: AuthenticationScreen(),
+      home: HomeScreen(),
     );
   }
 }

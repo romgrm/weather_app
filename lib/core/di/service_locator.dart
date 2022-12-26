@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:weather_app/dataLayer/datasources/authentication.data.dart';
 import 'package:weather_app/dataLayer/datasources/authentication_impl.data.dart';
+import 'package:weather_app/dataLayer/datasources/weather.data.dart';
+import 'package:weather_app/dataLayer/datasources/weather_impl.data.dart';
 
 import '../rest/restManager.dart';
 
@@ -16,4 +18,5 @@ void setUpGetIt() {
 
   // Datasources
   getIt.registerFactory<AuthenticationDataSource>(() => AuthenticationDataSourceImpl(getIt<RestManager>()));
+  getIt.registerFactory<WeatherDataSourceImpl>(() => WeatherDataSourceImpl(getIt<RestManager>()));
 }

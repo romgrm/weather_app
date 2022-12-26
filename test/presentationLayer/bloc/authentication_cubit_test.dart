@@ -1,9 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:weather_app/core/rest/rest_exception.dart';
-import 'package:weather_app/dataLayer/dto/user.dto.dart';
 import 'package:weather_app/dataLayer/repositories/authentication.repository.dart';
 import 'package:weather_app/domainLayer/user.entity.dart';
 import 'package:weather_app/presentationLayer/bloc/authentication.cubit.dart';

@@ -5,10 +5,8 @@ import 'package:weather_app/core/rest/restManager.dart';
 import 'package:weather_app/dataLayer/datasources/authentication_impl.data.dart';
 import 'package:weather_app/dataLayer/dto/user.dto.dart';
 
-// class AuthenticationRepositoryMock extends Mock implements AuthenticationRepository()
 class DioClientMock extends Mock implements RestManager {}
 
-// late AuthenticationRepositoryMock _authenticationRepositoryMock;
 late DioClientMock _mockDioClient;
 late AuthenticationDataSourceImpl _authenticationDataSourceImpl;
 
@@ -16,7 +14,6 @@ String email = '';
 String password = '';
 
 void setUp() {
-//  _authenticationRepositoryMock = AuthenticationRepositoryMock();
   _mockDioClient = DioClientMock();
 }
 

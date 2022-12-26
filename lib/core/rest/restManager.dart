@@ -28,23 +28,7 @@ class RestManager {
   }) async {
     try {
       Map<String, String> account = {"email": "test@test.fr", "password": "test"};
-      String email = "test@test.fr";
-      String password = "test";
-      bool isLoginSucess = false;
 
-      // body?.forEach((key, value) {
-      //   if (key == "email") {
-      //     if (value == "test@test.fr") {
-      //       isLoginSucess = true;
-      //     }
-      //     isLoginSucess = false;
-      //   } else {
-      //     if (value == "test") {
-      //       isLoginSucess = true;
-      //     }
-      //     isLoginSucess = false;
-      //   }
-      // });
       if (mapEquals(account, body)) {
         return {"id": "1", "firstName": "Romain", "lastName": "Gréaume"};
       } else {

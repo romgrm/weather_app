@@ -8,7 +8,7 @@ class WeatherDto with _$WeatherDto {
   const factory WeatherDto({
     int? id,
     String? description,
-    String? iconId,
+    String? icon,
   }) = _WeatherDto;
 
   factory WeatherDto.fromJson(Map<String, Object?> json) => _$WeatherDtoFromJson(json);

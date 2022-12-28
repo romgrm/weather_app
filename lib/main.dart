@@ -8,6 +8,7 @@ import 'package:weather_app/presentationLayer/bloc/authentication.cubit.dart';
 import 'package:weather_app/presentationLayer/bloc/weather.cubit.dart';
 import 'package:weather_app/presentationLayer/screens/home.screen.dart';
 import 'package:weather_app/theme/colors.cubit.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 import 'Theme/app.theme.dart';
 import 'dataLayer/repositories/weather.repository.dart';
@@ -15,6 +16,8 @@ import 'presentationLayer/screens/authentication.screen.dart';
 
 void main() {
   setUpGetIt();
+  // Init timezone default for all app
+  tz.initializeTimeZones();
   runApp(const AppProviders());
 }
 

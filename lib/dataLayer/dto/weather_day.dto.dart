@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:weather_app/dataLayer/dto/weather.dto.dart';
+import 'package:weather_app/domainLayer/weather_day.entity.dart';
 
 import 'main.dto.dart';
 
@@ -18,5 +19,5 @@ class WeatherDayDto with _$WeatherDayDto {
 
   factory WeatherDayDto.fromJson(Map<String, Object?> json) => _$WeatherDayDtoFromJson(json);
 
-  // UserEntity toEntity() => UserEntity(id: id, firstName: firstName, lastName: lastName);
+  WeatherDayEntity toEntity() => WeatherDayEntity(date: dt_txt, infos: main?.toEntity(), weathers: weather?.map((e) => e.toEntity()).toList());
 }

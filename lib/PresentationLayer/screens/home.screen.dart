@@ -1,3 +1,4 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -40,24 +41,47 @@ class _HomeScreenState extends State<HomeScreen> {
             builder: (context, state) {
               return state.when(
                 onSuccess: (weatherDays) {
-                  return ListView.builder(
-                    itemBuilder: ((context, index) {
-                      return Center(
-                        child: Card(
-                          color: Colors.red,
-                          child: Column(
-                            children: [
-                              Text("${weatherDays.keys.toList()[index]}"),
-                              for (var item in weatherDays.values.toList()[index].entries)
-                                for (var weatherDay in item.value) WeatherCardWidget(weatherDayDto: weatherDay)
-                              // Text("${weatherDay.weather?.first.description}")
-                            ],
-                          ),
-                        ),
-                      );
-                    }),
-                    itemCount: weatherDays.length,
-                  );
+                  return Swiper(
+                      layout: SwiperLayout.DEFAULT,
+                      loop: false,
+                      itemWidth: 500,
+                      // itemHeight: 700,
+                      itemBuilder: (context, index) {
+                        return SingleChildScrollView(
+                          child: Center(
+                              child: Card(
+                            color: Colors.red,
+                            child: Column(
+                              children: [
+                                Text("${weatherDays.keys.toList()[index]}"),
+                                for (var item in weatherDays.values.toList()[index].entries)
+                                  for (var weatherDay in item.value) WeatherCardWidget(weatherDayDto: weatherDay)
+                                // Text("${weatherDay.weather?.first.description}")
+                              ],
+                            ),
+                          )),
+                        );
+                      },
+                      itemCount: weatherDays.length,
+                      pagination: SwiperPagination(alignment: Alignment.bottomCenter));
+                  // return ListView.builder(
+                  //   itemBuilder: ((context, index) {
+                  //     return Center(
+                  //       child: Card(
+                  //         color: Colors.red,
+                  //         child: Column(
+                  //           children: [
+                  //             Text("${weatherDays.keys.toList()[index]}"),
+                  //             for (var item in weatherDays.values.toList()[index].entries)
+                  //               for (var weatherDay in item.value) WeatherCardWidget(weatherDayDto: weatherDay)
+                  //             // Text("${weatherDay.weather?.first.description}")
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     );
+                  //   }),
+                  //   itemCount: weatherDays.length,
+                  // );
                 },
                 onError: (errorMessage) => Text("error", style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.red)),
                 loading: () => Center(child: Text("loading", style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.red))),

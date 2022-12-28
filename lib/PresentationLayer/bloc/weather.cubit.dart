@@ -39,7 +39,7 @@ class WeatherCubit extends Cubit<WeatherState> {
         date = date.add(Duration(days: 1));
       }
       print(weatherDaysFiltered);
-      emit(OnSuccess(weatherDays: weatherDays)); //TODO change state return for weatherDaysFiltered
+      emit(OnSuccess(weatherDays: weatherDaysFiltered));
     } else {
       emit(OnError(errorMessage: RestException.restErrorUnauthorized));
     }

@@ -19,21 +19,26 @@ mixin _$WeatherState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<WeatherDayDto> weatherDays) onSuccess,
+    required TResult Function(
+            Map<String, Map<String, List<WeatherDayDto>>> weatherDays)
+        onSuccess,
     required TResult Function(String errorMessage) onError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<WeatherDayDto> weatherDays)? onSuccess,
+    TResult? Function(
+            Map<String, Map<String, List<WeatherDayDto>>> weatherDays)?
+        onSuccess,
     TResult? Function(String errorMessage)? onError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<WeatherDayDto> weatherDays)? onSuccess,
+    TResult Function(Map<String, Map<String, List<WeatherDayDto>>> weatherDays)?
+        onSuccess,
     TResult Function(String errorMessage)? onError,
     required TResult orElse(),
   }) =>
@@ -117,7 +122,9 @@ class _$Loading implements Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<WeatherDayDto> weatherDays) onSuccess,
+    required TResult Function(
+            Map<String, Map<String, List<WeatherDayDto>>> weatherDays)
+        onSuccess,
     required TResult Function(String errorMessage) onError,
   }) {
     return loading();
@@ -127,7 +134,9 @@ class _$Loading implements Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<WeatherDayDto> weatherDays)? onSuccess,
+    TResult? Function(
+            Map<String, Map<String, List<WeatherDayDto>>> weatherDays)?
+        onSuccess,
     TResult? Function(String errorMessage)? onError,
   }) {
     return loading?.call();
@@ -137,7 +146,8 @@ class _$Loading implements Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<WeatherDayDto> weatherDays)? onSuccess,
+    TResult Function(Map<String, Map<String, List<WeatherDayDto>>> weatherDays)?
+        onSuccess,
     TResult Function(String errorMessage)? onError,
     required TResult orElse(),
   }) {
@@ -192,7 +202,7 @@ abstract class _$$OnSuccessCopyWith<$Res> {
           _$OnSuccess value, $Res Function(_$OnSuccess) then) =
       __$$OnSuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<WeatherDayDto> weatherDays});
+  $Res call({Map<String, Map<String, List<WeatherDayDto>>> weatherDays});
 }
 
 /// @nodoc
@@ -212,7 +222,7 @@ class __$$OnSuccessCopyWithImpl<$Res>
       weatherDays: null == weatherDays
           ? _value._weatherDays
           : weatherDays // ignore: cast_nullable_to_non_nullable
-              as List<WeatherDayDto>,
+              as Map<String, Map<String, List<WeatherDayDto>>>,
     ));
   }
 }
@@ -220,14 +230,16 @@ class __$$OnSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OnSuccess implements OnSuccess {
-  const _$OnSuccess({required final List<WeatherDayDto> weatherDays})
+  const _$OnSuccess(
+      {required final Map<String, Map<String, List<WeatherDayDto>>>
+          weatherDays})
       : _weatherDays = weatherDays;
 
-  final List<WeatherDayDto> _weatherDays;
+  final Map<String, Map<String, List<WeatherDayDto>>> _weatherDays;
   @override
-  List<WeatherDayDto> get weatherDays {
+  Map<String, Map<String, List<WeatherDayDto>>> get weatherDays {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_weatherDays);
+    return EqualUnmodifiableMapView(_weatherDays);
   }
 
   @override
@@ -258,7 +270,9 @@ class _$OnSuccess implements OnSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<WeatherDayDto> weatherDays) onSuccess,
+    required TResult Function(
+            Map<String, Map<String, List<WeatherDayDto>>> weatherDays)
+        onSuccess,
     required TResult Function(String errorMessage) onError,
   }) {
     return onSuccess(weatherDays);
@@ -268,7 +282,9 @@ class _$OnSuccess implements OnSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<WeatherDayDto> weatherDays)? onSuccess,
+    TResult? Function(
+            Map<String, Map<String, List<WeatherDayDto>>> weatherDays)?
+        onSuccess,
     TResult? Function(String errorMessage)? onError,
   }) {
     return onSuccess?.call(weatherDays);
@@ -278,7 +294,8 @@ class _$OnSuccess implements OnSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<WeatherDayDto> weatherDays)? onSuccess,
+    TResult Function(Map<String, Map<String, List<WeatherDayDto>>> weatherDays)?
+        onSuccess,
     TResult Function(String errorMessage)? onError,
     required TResult orElse(),
   }) {
@@ -324,10 +341,11 @@ class _$OnSuccess implements OnSuccess {
 }
 
 abstract class OnSuccess implements WeatherState {
-  const factory OnSuccess({required final List<WeatherDayDto> weatherDays}) =
-      _$OnSuccess;
+  const factory OnSuccess(
+      {required final Map<String, Map<String, List<WeatherDayDto>>>
+          weatherDays}) = _$OnSuccess;
 
-  List<WeatherDayDto> get weatherDays;
+  Map<String, Map<String, List<WeatherDayDto>>> get weatherDays;
   @JsonKey(ignore: true)
   _$$OnSuccessCopyWith<_$OnSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -397,7 +415,9 @@ class _$OnError implements OnError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<WeatherDayDto> weatherDays) onSuccess,
+    required TResult Function(
+            Map<String, Map<String, List<WeatherDayDto>>> weatherDays)
+        onSuccess,
     required TResult Function(String errorMessage) onError,
   }) {
     return onError(errorMessage);
@@ -407,7 +427,9 @@ class _$OnError implements OnError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<WeatherDayDto> weatherDays)? onSuccess,
+    TResult? Function(
+            Map<String, Map<String, List<WeatherDayDto>>> weatherDays)?
+        onSuccess,
     TResult? Function(String errorMessage)? onError,
   }) {
     return onError?.call(errorMessage);
@@ -417,7 +439,8 @@ class _$OnError implements OnError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<WeatherDayDto> weatherDays)? onSuccess,
+    TResult Function(Map<String, Map<String, List<WeatherDayDto>>> weatherDays)?
+        onSuccess,
     TResult Function(String errorMessage)? onError,
     required TResult orElse(),
   }) {

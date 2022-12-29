@@ -13,11 +13,14 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'Theme/app.theme.dart';
 import 'dataLayer/repositories/weather.repository.dart';
 import 'presentationLayer/screens/authentication.screen.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
   setUpGetIt();
   // Init timezone default for all app
   tz.initializeTimeZones();
+  initializeDateFormatting('fr_FR', null);
+
   runApp(const AppProviders());
 }
 

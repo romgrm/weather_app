@@ -29,7 +29,7 @@ class AppTheme {
     // buttonTheme: ButtonThemeData(highlightColor: Colors.transparent, splashColor: Colors.transparent, buttonColor: lightColors.getThirdly()),
     cardTheme: CardTheme(color: lightColors.getThirdly()),
     colorScheme: ColorScheme.light(primary: lightColors.getThirdly()),
-    scaffoldBackgroundColor: AppColors.white,
+    scaffoldBackgroundColor: lightColors.getThirdly(),
     textTheme: lightTextTheme,
   );
 
@@ -52,7 +52,7 @@ class AppTheme {
     ),
     cardTheme: CardTheme(color: lightColors.getSecondary()),
     colorScheme: ColorScheme.dark(primary: darkColors.getThirdly()),
-    scaffoldBackgroundColor: lightColors.getThirdly(),
+    scaffoldBackgroundColor: darkColors.getThirdly(),
     textTheme: darkTextTheme,
   );
 

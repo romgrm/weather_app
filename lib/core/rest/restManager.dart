@@ -30,7 +30,7 @@ class RestManager {
       Map<String, String> account = {"email": "test@test.fr", "password": "test"};
 
       if (mapEquals(account, body)) {
-        return {"id": "1", "firstName": "Romain", "lastName": "Gréaume"};
+        return {"id": "1", "firstName": "John", "lastName": "Doe"};
       } else {
         return null;
       }

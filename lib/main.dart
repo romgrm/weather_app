@@ -95,7 +95,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {"/home": (context) => HomeScreen()},
+      routes: {"/authentication": (context) => AuthenticationScreen(), "/home": (context) => HomeScreen()},
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

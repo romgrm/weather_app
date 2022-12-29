@@ -10,6 +10,7 @@ Map<String, String> data = {
   "authMailValidatorText": "Entrez un email valide",
   "authPasswordValidatorText": "Entrez un mot de passe valide",
   "authValidateButtonLabel": "Se connecter",
+  "authDisconnectButtonLabel": "Se déconnecter",
 
   // Weather Screen
   "weatherGlobalCardTitle": "Voici la météo du ",

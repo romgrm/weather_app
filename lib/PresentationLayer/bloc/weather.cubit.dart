@@ -19,7 +19,7 @@ class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit(this.weatherRepository) : super(Loading());
 
   Future<void> getWeatherForFiveDays() async {
-    Map<String, Map<String, List<WeatherDayEntity>>> weatherDaysFiltered = {};
+    Map<DateTime, Map<String, List<WeatherDayEntity>>> weatherDaysFiltered = {};
     DateTime date = DateTime.now();
     emit(const Loading());
 
@@ -42,7 +42,7 @@ class WeatherCubit extends Cubit<WeatherState> {
             .whereNotNull()
             .toList();
 
-        weatherDaysFiltered.putIfAbsent("${DateFormat("yyyy-MM-dd").format(date)}", () => {"${DateFormat("yyyy-MM-dd").format(date)}": List.from(testWeahters)});
+        weatherDaysFiltered.putIfAbsent(date, () => {"${DateFormat("yyyy-MM-dd").format(date)}": List.from(testWeahters)});
         date = date.add(Duration(days: 1));
       }
       emit(OnSuccess(weatherDays: weatherDaysFiltered));

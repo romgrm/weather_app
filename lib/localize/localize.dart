@@ -12,6 +12,7 @@ Map<String, String> data = {
   "authValidateButtonLabel": "Se connecter",
 
   // Weather Screen
-  "weatherGlobalCardTitle": "Météo du ",
-  "weatherGlobalCardLocationTitle": "Paris"
+  "weatherGlobalCardTitle": "Voici la météo du ",
+  "weatherGlobalCardLocationTitle": "Paris",
+  "weatherInfosCardPerceivedTemperatureTitle": "Température\nressentie"
 };

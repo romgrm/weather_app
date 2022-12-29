@@ -193,6 +193,8 @@ abstract class _$$OnSuccessCopyWith<$Res> {
       __$$OnSuccessCopyWithImpl<$Res>;
   @useResult
   $Res call({UserEntity user});
+
+  $UserEntityCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -214,6 +216,14 @@ class __$$OnSuccessCopyWithImpl<$Res>
           : user // ignore: cast_nullable_to_non_nullable
               as UserEntity,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserEntityCopyWith<$Res> get user {
+    return $UserEntityCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 

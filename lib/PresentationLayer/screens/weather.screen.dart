@@ -7,6 +7,7 @@ import 'package:weather_app/common/extensions/date.extension.dart';
 import 'package:weather_app/common/extensions/string.extension.dart';
 import 'package:weather_app/common/spacers/spacers.dart';
 import 'package:weather_app/common/widgets/customAppBar.widget.dart';
+import 'package:weather_app/core/storage/storage.manager.dart';
 import 'package:weather_app/presentationLayer/bloc/authentication.cubit.dart';
 import 'package:weather_app/presentationLayer/widgets/global_weather_card.widget.dart';
 import 'package:weather_app/presentationLayer/widgets/weather_infos_card.widget.dart';
@@ -14,19 +15,21 @@ import 'package:weather_app/utils/snackbar.utils.dart';
 
 import '../../core/di/service_locator.dart';
 import '../../dataLayer/datasources/weather.data.dart';
+import '../../domainLayer/user.entity.dart';
 import '../../localize/localize.dart';
 import '../../theme/colors.cubit.dart';
 import '../bloc/weather.cubit.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class WeatherScreen extends StatefulWidget {
+  const WeatherScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<WeatherScreen> createState() => _WeatherScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _WeatherScreenState extends State<WeatherScreen> {
   String name = "";
+  final StorageManager _storage = getIt<StorageManager>();
   @override
   void initState() {
     super.initState();
@@ -36,14 +39,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthenticationCubit, AuthenticationState>(
-      builder: (context, state) {
+      builder: (context, authState) {
         return Scaffold(
           appBar: getCustomAppBar(
             context,
             withBackButton: false,
-            titleWidget: Center(
-                child: Text("Bonjour John", style: Theme.of(context).textTheme.titleLarge?.copyWith(color: context.read<ColorsCubit>().state.getPrimary(), fontSize: 25, fontWeight: FontWeight.w100))),
-            // titleWidget: state.whenOrNull(onSuccess: (user) => Center(child: Text("hello ${user.firstName}"))),
+            titleWidget: authState.whenOrNull(
+                onSuccess: (user) => Center(
+                    child: Text("${getLocalize("weatherHelloLabel")}" "${user.firstName}",
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(color: context.read<ColorsCubit>().state.getPrimary(), fontSize: 25, fontWeight: FontWeight.w100)))),
             actions: [
               InkWell(
                 onTap: () => showModalBottomSheet(
@@ -53,7 +57,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       return Padding(
                         padding: const EdgeInsets.all(spaceXL),
                         child: InkWell(
-                          onTap: () => Navigator.popAndPushNamed(context, "/authentication"),
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.popAndPushNamed(context, "/authentication");
+                            context.read<AuthenticationCubit>().logout();
+                          },
                           child: Row(
                             children: [
                               Padding(

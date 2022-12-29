@@ -13,7 +13,7 @@ Map<String, String> data = {
   "authDisconnectButtonLabel": "Se déconnecter",
 
   // Weather Screen
-  "weatherGlobalCardTitle": "Voici la météo du ",
+  "weatherHelloLabel": "Bonjour ",
   "weatherGlobalCardLocationTitle": "Paris",
   "weatherInfosCardPerceivedTemperatureTitle": "Température\nressentie"
 };

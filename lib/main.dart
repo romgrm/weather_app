@@ -6,18 +6,18 @@ import 'package:weather_app/core/di/service_locator.dart';
 import 'package:weather_app/dataLayer/repositories/authentication.repository.dart';
 import 'package:weather_app/presentationLayer/bloc/authentication.cubit.dart';
 import 'package:weather_app/presentationLayer/bloc/weather.cubit.dart';
-import 'package:weather_app/presentationLayer/screens/home.screen.dart';
+import 'package:weather_app/presentationLayer/screens/weather.screen.dart';
 import 'package:weather_app/theme/colors.cubit.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
 import 'Theme/app.theme.dart';
+import 'core/storage/storage.manager.dart';
 import 'dataLayer/repositories/weather.repository.dart';
 import 'presentationLayer/screens/authentication.screen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
   setUpGetIt();
-  // Init timezone default for all app
   tz.initializeTimeZones();
   initializeDateFormatting('fr_FR', null);
 
@@ -64,6 +64,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> with WidgetsBindingObserver {
   late Brightness _brightness;
+  final _storageManager = getIt<StorageManager>();
 
   @override
   void initState() {
@@ -71,6 +72,8 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     _updateTheme();
+
+    _storageManager.readCurrentUser();
   }
 
   @override
@@ -95,11 +98,32 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {"/authentication": (context) => AuthenticationScreen(), "/home": (context) => HomeScreen()},
+      routes: {"/authentication": (context) => AuthenticationScreen(), "/home": (context) => WeatherScreen()},
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      home: HomeScreen(),
+      home: Scaffold(
+        body: FutureBuilder(
+            future: _storageManager.readCurrentUser(),
+            builder: ((context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                const Center(child: CircularProgressIndicator());
+              }
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasData) {
+                  if (snapshot.data != null) {
+                    return WeatherScreen();
+                  }
+                } else {
+                  return AuthenticationScreen();
+                }
+              }
+              return const Center(child: CircularProgressIndicator());
+
+              return const SizedBox.shrink();
+              // return const AuthenticationScreen();
+            })),
+      ),
     );
   }
 }

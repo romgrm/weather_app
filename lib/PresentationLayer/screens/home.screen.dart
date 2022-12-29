@@ -1,13 +1,17 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:intl/intl.dart';
+import 'package:weather_app/common/extensions/date.extension.dart';
+import 'package:weather_app/common/spacers/spacers.dart';
 import 'package:weather_app/common/widgets/customAppBar.widget.dart';
 import 'package:weather_app/presentationLayer/bloc/authentication.cubit.dart';
+import 'package:weather_app/presentationLayer/widgets/global_weather_card.widget.dart';
 import 'package:weather_app/presentationLayer/widgets/weather_card.widget.dart';
 
 import '../../core/di/service_locator.dart';
 import '../../dataLayer/datasources/weather.data.dart';
+import '../../localize/localize.dart';
 import '../../theme/colors.cubit.dart';
 import '../bloc/weather.cubit.dart';
 
@@ -44,56 +48,51 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Swiper(
                       layout: SwiperLayout.DEFAULT,
                       loop: false,
-                      itemWidth: 500,
-                      // itemHeight: 700,
                       itemBuilder: (context, index) {
-                        return SingleChildScrollView(
-                          child: Center(
-                              child: Card(
-                            color: Colors.red,
-                            child: Column(
-                              children: [
-                                Text("${weatherDays.keys.toList()[index]}"),
-                                for (var item in weatherDays.values.toList()[index].entries)
-                                  for (var weatherDay in item.value) WeatherCardWidget(weatherDayDto: weatherDay)
-                                // Text("${weatherDay.weather?.first.description}")
-                              ],
-                            ),
-                          )),
+                        return Center(
+                          child: Card(
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(spaceS)),
+                              color: context.read<ColorsCubit>().state.getThirdly(),
+                              child: Padding(
+                                padding: const EdgeInsets.all(spaceXXL),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: spaceL),
+                                        child: GlobalWeatherCard(weatherDayDto: weatherDays.values.toList()[index].entries.first.value.first),
+                                      ),
+                                      Container(
+                                        height: MediaQuery.of(context).size.height,
+                                        width: MediaQuery.of(context).size.width,
+                                        child: ListView(
+                                          scrollDirection: Axis.horizontal,
+                                          children: [
+                                            Card(
+                                              color: context.read<ColorsCubit>().state.getThirdly().withOpacity(0.3),
+                                              child: Row(
+                                                children: [
+                                                  for (var weathers in weatherDays.values.toList()[index].entries)
+                                                    for (var weatherDay in weathers.value) WeatherCardWidget(weatherDayDto: weatherDay),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )),
                         );
                       },
                       itemCount: weatherDays.length,
                       pagination: SwiperPagination(alignment: Alignment.bottomCenter));
-                  // return ListView.builder(
-                  //   itemBuilder: ((context, index) {
-                  //     return Center(
-                  //       child: Card(
-                  //         color: Colors.red,
-                  //         child: Column(
-                  //           children: [
-                  //             Text("${weatherDays.keys.toList()[index]}"),
-                  //             for (var item in weatherDays.values.toList()[index].entries)
-                  //               for (var weatherDay in item.value) WeatherCardWidget(weatherDayDto: weatherDay)
-                  //             // Text("${weatherDay.weather?.first.description}")
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     );
-                  //   }),
-                  //   itemCount: weatherDays.length,
-                  // );
                 },
                 onError: (errorMessage) => Text("error", style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.red)),
                 loading: () => Center(child: Text("loading", style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.red))),
               );
-              // return Container(
-              //   child: Center(
-              //       child: ElevatedButton(
-              //           onPressed: () {
-              //             // provider.getWeatherForFiveDays();
-              //           },
-              //           child: Text("test"))),
-              // );
             },
           ),
         );

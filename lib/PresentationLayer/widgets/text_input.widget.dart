@@ -47,6 +47,13 @@ class _TextInputWidgetState extends State<TextInputWidget> {
               hintStyle: Theme.of(context).textTheme.titleSmall?.copyWith(
                     fontSize: 18,
                   ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(spaceM),
+                borderSide: BorderSide(
+                  color: context.read<ColorsCubit>().state.getThirdly(),
+                  width: 1.0,
+                ),
+              ),
               hintText: getLocalize(widget.hintText ?? ""),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(spaceM),

@@ -74,6 +74,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                                 child: Column(
                                   children: [
                                     TextInputWidget(
+                                        key: Key("emailTextInput"),
                                         hintText: "authenticationEmailTextInputLabel",
                                         isObscure: false,
                                         textControllerCallback: ((value) {
@@ -82,6 +83,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                                           });
                                         })),
                                     TextInputWidget(
+                                        key: Key("passwordTextInput"),
                                         hintText: "authenticationPasswordTextInputLabel",
                                         isObscure: true,
                                         textControllerCallback: ((value) {

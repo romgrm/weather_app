@@ -22,7 +22,7 @@ void main() {
 
   setUp();
 
-  group("test user loggin", () {
+  group("test user login", () {
     email = "test@test.fr";
     password = "test";
 
@@ -34,7 +34,7 @@ void main() {
 
         when(
           () => _mockDioClient.post(path: "/auth", body: body),
-        ).thenAnswer((_) async => Future.value({"id": "1", "firstName": "Romain", "lastName": "Gréaume"}));
+        ).thenAnswer((_) async => Future.value({"id": "1", "firstName": "John", "lastName": "Doe"}));
 
         _authenticationDataSourceImpl = AuthenticationDataSourceImpl(_mockDioClient);
 

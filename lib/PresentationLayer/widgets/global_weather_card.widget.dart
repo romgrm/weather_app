@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:weather_app/dataLayer/dto/weather_day.dto.dart';
-import 'package:weather_app/domainLayer/weather_day.entity.dart';
-import 'package:weather_app/common/extensions/date.extension.dart';
-import 'package:weather_app/common/extensions/string.extension.dart';
 
+import '../../common/extensions/string.extension.dart';
+import '../../domainLayer/weather_day.entity.dart';
 import '../../localize/localize.dart';
 
 class GlobalWeatherCard extends StatelessWidget {

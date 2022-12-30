@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weather_app/domainLayer/main_infos.entity.dart';
+
+import '../../domainLayer/main_infos.entity.dart';
 
 part 'main.dto.freezed.dart';
 part 'main.dto.g.dart';

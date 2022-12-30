@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:weather_app/presentationLayer/bloc/authentication.cubit.dart';
 
 import '../../common/spacers/spacers.dart';
 import '../../localize/localize.dart';
+import '../../theme/colors.cubit.dart';
+import '../bloc/authentication.cubit.dart';
 
 typedef TextControllerCallback = Function(String value);
 
@@ -49,10 +50,6 @@ class _TextInputWidgetState extends State<TextInputWidget> {
               hintText: getLocalize(widget.hintText ?? ""),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(spaceM),
-                // borderSide: BorderSide(
-                //   color: context.read<ColorsCubit>().state.getGreyTwo(),
-                //   width: 1.0,
-                // ),
               ),
               suffixIcon: widget.isObscure
                   ? InkWell(

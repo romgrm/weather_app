@@ -1,8 +1,7 @@
-import 'package:weather_app/dataLayer/dto/user.dto.dart';
-import 'package:weather_app/domainLayer/user.entity.dart';
-
 import '../../core/di/service_locator.dart';
+import '../../domainLayer/user.entity.dart';
 import '../datasources/authentication.data.dart';
+import '../dto/user.dto.dart';
 
 class AuthenticationRepository {
   final _provider = getIt<AuthenticationDataSource>();

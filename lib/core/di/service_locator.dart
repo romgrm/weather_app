@@ -1,13 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:weather_app/core/storage/secure_storage_impl.dart';
-import 'package:weather_app/dataLayer/datasources/authentication.data.dart';
-import 'package:weather_app/dataLayer/datasources/authentication_impl.data.dart';
-import 'package:weather_app/dataLayer/datasources/weather.data.dart';
-import 'package:weather_app/dataLayer/datasources/weather_impl.data.dart';
 
+import '../../dataLayer/datasources/authentication.data.dart';
+import '../../dataLayer/datasources/authentication_impl.data.dart';
+import '../../dataLayer/datasources/weather_impl.data.dart';
 import '../rest/restManager.dart';
+import '../storage/secure_storage_impl.dart';
 import '../storage/storage.manager.dart';
 
 final getIt = GetIt.instance;

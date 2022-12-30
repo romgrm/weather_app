@@ -26,7 +26,6 @@ class AppTheme {
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: AppColors.white,
     ),
-    // buttonTheme: ButtonThemeData(highlightColor: Colors.transparent, splashColor: Colors.transparent, buttonColor: lightColors.getThirdly()),
     cardTheme: CardTheme(color: lightColors.getThirdly()),
     colorScheme: ColorScheme.light(primary: lightColors.getThirdly()),
     scaffoldBackgroundColor: lightColors.getThirdly(),

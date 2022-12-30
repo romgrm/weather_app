@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:weather_app/dataLayer/dto/weather_day.dto.dart';
-import 'package:weather_app/domainLayer/weather_day.entity.dart';
-import 'package:weather_app/common/extensions/date.extension.dart';
-import 'package:weather_app/common/extensions/string.extension.dart';
-import 'package:weather_app/theme/colors.cubit.dart';
 
+import '../../common/extensions/date.extension.dart';
+import '../../common/extensions/string.extension.dart';
 import '../../common/spacers/spacers.dart';
+import '../../domainLayer/weather_day.entity.dart';
 import '../../localize/localize.dart';
+import '../../theme/colors.cubit.dart';
 
 class WeatherInfosCardWidget extends StatefulWidget {
   final WeatherDayEntity weatherDayDto;
@@ -22,6 +21,7 @@ class _WeatherInfosCardWidgetState extends State<WeatherInfosCardWidget> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: spaceL),
         child: Column(
@@ -45,26 +45,16 @@ class _WeatherInfosCardWidgetState extends State<WeatherInfosCardWidget> {
               padding: const EdgeInsets.symmetric(vertical: spaceM),
               child: Row(
                 children: [
-                  variantTemp(widget.weatherDayDto.infos?.maximumTemperature, true),
-                  variantTemp(widget.weatherDayDto.infos?.minimalTemperature, false),
+                  VariantTemp(widget.weatherDayDto.infos?.maximumTemperature, true),
+                  VariantTemp(widget.weatherDayDto.infos?.minimalTemperature, false),
                 ],
               ),
             ),
-            // Row(
-            //   children: [
-            //     Icon(MdiIcons.arrowUp),
-            //     Text(
-            //       "${widget.weatherDayDto.infos?.maximumTemperature?.floor()}°",
-            //       style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 20, color: context.read<ColorsCubit>().state.getPrimary()),
-            //     ),
-            //   ],
-            // ),
             for (var weather in widget.weatherDayDto.weathers!)
               Padding(
                 padding: const EdgeInsets.only(bottom: spaceM),
                 child: Text("${weather.description?.capitalize()}"),
               ),
-
             Card(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(spaceM)),
               color: context.read<ColorsCubit>().state.getThirdly().withOpacity(0.5),
@@ -91,7 +81,7 @@ class _WeatherInfosCardWidgetState extends State<WeatherInfosCardWidget> {
     );
   }
 
-  Widget variantTemp(double? temp, bool isMax) {
+  Widget VariantTemp(double? temp, bool isMax) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: spaceS),
       child: Row(

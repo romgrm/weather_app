@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/theme/colors.cubit.dart';
+
+import '../../theme/colors.cubit.dart';
 
 AppBar getCustomAppBar(
   BuildContext context, {

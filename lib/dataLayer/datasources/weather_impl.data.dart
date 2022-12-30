@@ -1,6 +1,6 @@
-import 'package:weather_app/core/rest/restManager.dart';
-import 'package:weather_app/dataLayer/datasources/weather.data.dart';
-import 'package:weather_app/dataLayer/dto/weather_day.dto.dart';
+import '../../core/rest/restManager.dart';
+import '../dto/weather_day.dto.dart';
+import 'weather.data.dart';
 
 class WeatherDataSourceImpl implements WeatherDataSource {
   RestManager restManager;

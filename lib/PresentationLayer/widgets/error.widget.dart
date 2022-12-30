@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:weather_app/localize/localize.dart';
-import 'package:weather_app/presentationLayer/bloc/weather.cubit.dart';
 
 import '../../common/spacers/spacers.dart';
+import '../../localize/localize.dart';
+import '../bloc/weather.cubit.dart';
 
 class ErrorHandleWidget extends StatelessWidget {
   const ErrorHandleWidget({super.key});

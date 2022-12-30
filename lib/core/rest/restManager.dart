@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:weather_app/core/rest/rest_exception.dart';
+
+import 'rest_exception.dart';
 
 class RestManager {
   final Dio dio;

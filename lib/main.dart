@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/core/di/service_locator.dart';
-import 'package:weather_app/dataLayer/repositories/authentication.repository.dart';
-import 'package:weather_app/presentationLayer/bloc/authentication.cubit.dart';
-import 'package:weather_app/presentationLayer/bloc/weather.cubit.dart';
-import 'package:weather_app/presentationLayer/screens/weather.screen.dart';
-import 'package:weather_app/theme/colors.cubit.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
 import 'Theme/app.theme.dart';
+import 'core/di/service_locator.dart';
 import 'core/storage/storage.manager.dart';
+import 'dataLayer/repositories/authentication.repository.dart';
 import 'dataLayer/repositories/weather.repository.dart';
+import 'presentationLayer/bloc/authentication.cubit.dart';
+import 'presentationLayer/bloc/weather.cubit.dart';
 import 'presentationLayer/screens/authentication.screen.dart';
-import 'package:intl/date_symbol_data_local.dart';
+import 'presentationLayer/screens/weather.screen.dart';
+import 'theme/colors.cubit.dart';
 
 void main() {
   setUpGetIt();

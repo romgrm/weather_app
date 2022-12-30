@@ -2,14 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/domainLayer/weather_day.entity.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/timezone.dart';
 
 import '../../common/extensions/date.extension.dart';
 import '../../core/rest/rest_exception.dart';
-import '../../dataLayer/dto/weather_day.dto.dart';
 import '../../dataLayer/repositories/weather.repository.dart';
-import 'package:timezone/timezone.dart' as tz;
-import 'package:timezone/timezone.dart';
+import '../../domainLayer/weather_day.entity.dart';
 
 part 'weather.cubit.freezed.dart';
 part 'weather.state.dart';

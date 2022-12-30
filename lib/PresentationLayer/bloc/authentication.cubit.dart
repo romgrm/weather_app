@@ -1,14 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weather_app/core/storage/storage.manager.dart';
-import 'package:weather_app/dataLayer/repositories/authentication.repository.dart';
 
 import '../../core/di/service_locator.dart';
 import '../../core/rest/rest_exception.dart';
+import '../../core/storage/storage.manager.dart';
+import '../../dataLayer/repositories/authentication.repository.dart';
 import '../../domainLayer/user.entity.dart';
 
-part 'authentication.state.dart';
 part 'authentication.cubit.freezed.dart';
+part 'authentication.state.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthenticationRepository authenticationRepository;

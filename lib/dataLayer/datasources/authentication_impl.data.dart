@@ -1,7 +1,6 @@
-import 'package:weather_app/dataLayer/datasources/authentication.data.dart';
-import 'package:weather_app/dataLayer/dto/user.dto.dart';
-
 import '../../core/rest/restManager.dart';
+import '../dto/user.dto.dart';
+import 'authentication.data.dart';
 
 class AuthenticationDataSourceImpl implements AuthenticationDataSource {
   final RestManager _restManager;

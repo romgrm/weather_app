@@ -127,8 +127,9 @@ class __$$_MainDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MainDto implements _MainDto {
-  const _$_MainDto({this.temp, this.feels_like, this.temp_min, this.temp_max});
+class _$_MainDto extends _MainDto {
+  const _$_MainDto({this.temp, this.feels_like, this.temp_min, this.temp_max})
+      : super._();
 
   factory _$_MainDto.fromJson(Map<String, dynamic> json) =>
       _$$_MainDtoFromJson(json);
@@ -180,12 +181,13 @@ class _$_MainDto implements _MainDto {
   }
 }
 
-abstract class _MainDto implements MainDto {
+abstract class _MainDto extends MainDto {
   const factory _MainDto(
       {final double? temp,
       final double? feels_like,
       final double? temp_min,
       final double? temp_max}) = _$_MainDto;
+  const _MainDto._() : super._();
 
   factory _MainDto.fromJson(Map<String, dynamic> json) = _$_MainDto.fromJson;
 

@@ -25,8 +25,10 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
+          physics: BouncingScrollPhysics(),
           children: [
             BlocConsumer<AuthenticationCubit, AuthenticationState>(
               listener: (context, state) {
@@ -49,7 +51,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                   },
                   onSuccess: (user) {
                     Navigator.of(context).pop();
-                    Navigator.pushNamed(context, "/home");
+                    Navigator.popAndPushNamed(context, "/home");
                   },
                 );
               },
@@ -90,6 +92,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: spaceM),
                                       child: ElevatedButton(
+                                          style: ButtonStyle(shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(spaceM)))),
                                           onPressed: () {
                                             if (_formKey.currentState!.validate()) {
                                               context.read<AuthenticationCubit>().login(email, password);

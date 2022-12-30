@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:integration_test/integration_test_driver.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:weather_app/core/di/service_locator.dart';
 import 'package:weather_app/main.dart';
 import 'package:weather_app/presentationLayer/bloc/authentication.cubit.dart';
-import 'package:weather_app/presentationLayer/screens/authentication.screen.dart';
-import 'package:weather_app/utils/snackbar.utils.dart';
 
 class AuthenticationCubitMock extends Mock implements AuthenticationCubit {}
 

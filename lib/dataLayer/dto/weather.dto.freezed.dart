@@ -22,7 +22,7 @@ WeatherDto _$WeatherDtoFromJson(Map<String, dynamic> json) {
 mixin _$WeatherDto {
   int? get id => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  String? get iconId => throw _privateConstructorUsedError;
+  String? get icon => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $WeatherDtoCopyWith<$Res> {
           WeatherDto value, $Res Function(WeatherDto) then) =
       _$WeatherDtoCopyWithImpl<$Res, WeatherDto>;
   @useResult
-  $Res call({int? id, String? description, String? iconId});
+  $Res call({int? id, String? description, String? icon});
 }
 
 /// @nodoc
@@ -54,7 +54,7 @@ class _$WeatherDtoCopyWithImpl<$Res, $Val extends WeatherDto>
   $Res call({
     Object? id = freezed,
     Object? description = freezed,
-    Object? iconId = freezed,
+    Object? icon = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -65,9 +65,9 @@ class _$WeatherDtoCopyWithImpl<$Res, $Val extends WeatherDto>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      iconId: freezed == iconId
-          ? _value.iconId
-          : iconId // ignore: cast_nullable_to_non_nullable
+      icon: freezed == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -81,7 +81,7 @@ abstract class _$$_WeatherDtoCopyWith<$Res>
       __$$_WeatherDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? description, String? iconId});
+  $Res call({int? id, String? description, String? icon});
 }
 
 /// @nodoc
@@ -97,7 +97,7 @@ class __$$_WeatherDtoCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? description = freezed,
-    Object? iconId = freezed,
+    Object? icon = freezed,
   }) {
     return _then(_$_WeatherDto(
       id: freezed == id
@@ -108,9 +108,9 @@ class __$$_WeatherDtoCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      iconId: freezed == iconId
-          ? _value.iconId
-          : iconId // ignore: cast_nullable_to_non_nullable
+      icon: freezed == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -118,8 +118,8 @@ class __$$_WeatherDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_WeatherDto implements _WeatherDto {
-  const _$_WeatherDto({this.id, this.description, this.iconId});
+class _$_WeatherDto extends _WeatherDto {
+  const _$_WeatherDto({this.id, this.description, this.icon}) : super._();
 
   factory _$_WeatherDto.fromJson(Map<String, dynamic> json) =>
       _$$_WeatherDtoFromJson(json);
@@ -129,11 +129,11 @@ class _$_WeatherDto implements _WeatherDto {
   @override
   final String? description;
   @override
-  final String? iconId;
+  final String? icon;
 
   @override
   String toString() {
-    return 'WeatherDto(id: $id, description: $description, iconId: $iconId)';
+    return 'WeatherDto(id: $id, description: $description, icon: $icon)';
   }
 
   @override
@@ -144,12 +144,12 @@ class _$_WeatherDto implements _WeatherDto {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.iconId, iconId) || other.iconId == iconId));
+            (identical(other.icon, icon) || other.icon == icon));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, description, iconId);
+  int get hashCode => Object.hash(runtimeType, id, description, icon);
 
   @JsonKey(ignore: true)
   @override
@@ -165,11 +165,12 @@ class _$_WeatherDto implements _WeatherDto {
   }
 }
 
-abstract class _WeatherDto implements WeatherDto {
+abstract class _WeatherDto extends WeatherDto {
   const factory _WeatherDto(
       {final int? id,
       final String? description,
-      final String? iconId}) = _$_WeatherDto;
+      final String? icon}) = _$_WeatherDto;
+  const _WeatherDto._() : super._();
 
   factory _WeatherDto.fromJson(Map<String, dynamic> json) =
       _$_WeatherDto.fromJson;
@@ -179,7 +180,7 @@ abstract class _WeatherDto implements WeatherDto {
   @override
   String? get description;
   @override
-  String? get iconId;
+  String? get icon;
   @override
   @JsonKey(ignore: true)
   _$$_WeatherDtoCopyWith<_$_WeatherDto> get copyWith =>

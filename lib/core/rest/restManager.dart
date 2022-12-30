@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:weather_app/core/rest/rest_exception.dart';
+
+import 'rest_exception.dart';
 
 class RestManager {
   final Dio dio;
@@ -30,7 +31,7 @@ class RestManager {
       Map<String, String> account = {"email": "test@test.fr", "password": "test"};
 
       if (mapEquals(account, body)) {
-        return {"id": "1", "firstName": "Romain", "lastName": "Gréaume"};
+        return {"id": "1", "firstName": "John", "lastName": "Doe"};
       } else {
         return null;
       }

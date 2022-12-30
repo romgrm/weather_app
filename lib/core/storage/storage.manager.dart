@@ -21,6 +21,7 @@ class StorageManager {
   }
 
   Future<UserEntity?> readCurrentUser() async {
+    await deleteAllOnFirstRun();
     String? current = await _storage.read(currentUserKey);
 
     if (current != null) {

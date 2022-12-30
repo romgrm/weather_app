@@ -28,6 +28,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
+          physics: BouncingScrollPhysics(),
           children: [
             BlocConsumer<AuthenticationCubit, AuthenticationState>(
               listener: (context, state) {

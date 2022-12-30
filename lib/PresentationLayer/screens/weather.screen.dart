@@ -2,19 +2,19 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:weather_app/presentationLayer/widgets/error.widget.dart';
+
 import '../../common/extensions/date.extension.dart';
 import '../../common/extensions/string.extension.dart';
 import '../../common/spacers/spacers.dart';
 import '../../common/widgets/customAppBar.widget.dart';
-import '../bloc/authentication.cubit.dart';
-import '../widgets/global_weather_card.widget.dart';
-import '../widgets/weather_infos_card.widget.dart';
-import '../../utils/snackbar.utils.dart';
-
 import '../../localize/localize.dart';
 import '../../theme/colors.cubit.dart';
+import '../../utils/snackbar.utils.dart';
+import '../bloc/authentication.cubit.dart';
 import '../bloc/weather.cubit.dart';
+import '../widgets/error.widget.dart';
+import '../widgets/global_weather_card.widget.dart';
+import '../widgets/weather_infos_card.widget.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
@@ -45,7 +45,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
             actions: [
               InkWell(
                 onTap: () => showModalBottomSheet(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(spaceM)),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(spaceM),
+                      ),
+                    ),
                     context: context,
                     builder: (context) {
                       return Padding(
@@ -57,6 +61,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             context.read<AuthenticationCubit>().logout();
                           },
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(right: spaceS),
@@ -91,6 +96,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               return state.when(
                 onSuccess: (weatherDays) {
                   return Swiper(
+                      physics: BouncingScrollPhysics(),
                       layout: SwiperLayout.DEFAULT,
                       loop: false,
                       itemBuilder: (context, index) {
@@ -123,7 +129,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(vertical: spaceS),
                                       child: ListView(
-                                        shrinkWrap: true,
+                                        physics: BouncingScrollPhysics(),
+                                        shrinkWrap: false,
                                         scrollDirection: Axis.horizontal,
                                         children: [
                                           for (var weathers in weatherDays.values.toList()[index].entries)

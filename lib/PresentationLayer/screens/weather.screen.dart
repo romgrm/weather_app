@@ -146,7 +146,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         );
                       },
                       itemCount: weatherDays.length,
-                      pagination: SwiperPagination(alignment: Alignment.bottomCenter, margin: EdgeInsets.all(spaceL)));
+                      pagination: SwiperPagination(
+                          alignment: Alignment.bottomCenter,
+                          margin: EdgeInsets.all(spaceL),
+                          builder: DotSwiperPaginationBuilder(activeColor: context.read<ColorsCubit>().state.getPrimary(), color: context.read<ColorsCubit>().state.getPrimary().withOpacity(0.1))));
                 },
                 onError: (errorMessage) => const ErrorHandleWidget(),
                 loading: () => Center(

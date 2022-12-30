@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:weather_app/core/rest/restManager.dart';
 import 'package:weather_app/dataLayer/datasources/weather_impl.data.dart';
 import 'package:weather_app/dataLayer/dto/weather_day.dto.dart';
+
+import '../fixtures/fixture_reader.dart';
 
 class DioClientMock extends Mock implements RestManager {}
 
@@ -27,7 +31,7 @@ void main() {
 
       when(
         () => _mockDioClient.get(path: "https://api.openweathermap.org/data/2.5/forecast?", parameters: params),
-      ).thenAnswer((_) async => Future.value([WeatherDayDto()]));
+      ).thenAnswer((_) async => Future.value(json.decode(fixture('weather.json'))));
 
       _weatherDataSource = WeatherDataSourceImpl(_mockDioClient);
 

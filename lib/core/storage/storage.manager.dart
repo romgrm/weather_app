@@ -1,21 +1,27 @@
 import 'dart:convert';
 
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:weather_app/core/storage/secure_storage.dart';
-import 'package:weather_app/domainLayer/user.entity.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../domainLayer/user.entity.dart';
+import 'secure_storage.dart';
 
 class StorageManager {
   static const currentUserKey = 'currentUser';
 
   final SecureStorageInterface _storage;
-  final _iosOptions = const IOSOptions(
-    accessibility: IOSAccessibility.unlocked_this_device,
-  );
 
   StorageManager(this._storage);
 
+  Future<void> deleteAllOnFirstRun() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool('first_run') ?? true) {
+      await _storage.deleteAll();
+    }
+    prefs.setBool('first_run', false);
+  }
+
   Future<UserEntity?> readCurrentUser() async {
-    String? current = await _storage.read(currentUserKey, null, _iosOptions);
+    String? current = await _storage.read(currentUserKey);
 
     if (current != null) {
       Map<String, dynamic> json = jsonDecode(current);
@@ -27,11 +33,11 @@ class StorageManager {
   Future<void> writeCurrentUser(UserEntity user) async {
     String json = jsonEncode(user);
     if (json.isNotEmpty) {
-      await _storage.write(currentUserKey, json, null, _iosOptions);
+      await _storage.write(currentUserKey, json);
     }
   }
 
   Future<void> deleteCurrentUser() async {
-    await _storage.deleteAll(null, null);
+    await _storage.deleteAll();
   }
 }

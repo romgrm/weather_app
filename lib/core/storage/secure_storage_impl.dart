@@ -1,5 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:weather_app/core/storage/secure_storage.dart';
+
+import 'secure_storage.dart';
 
 class SecureStorageImpl implements SecureStorageInterface {
   final FlutterSecureStorage storage;
@@ -7,18 +8,18 @@ class SecureStorageImpl implements SecureStorageInterface {
   SecureStorageImpl(this.storage);
 
   @override
-  Future<String?> read(String key, AndroidOptions? androidOptions, IOSOptions? iosOptions) async {
-    final result = await storage.read(key: key, aOptions: androidOptions, iOptions: iosOptions);
+  Future<String?> read(String key) async {
+    final result = await storage.read(key: key);
     return result;
   }
 
   @override
-  Future<void> write(String key, String value, AndroidOptions? androidOptions, IOSOptions? iosOptions) async {
-    await storage.write(key: key, value: value, aOptions: androidOptions, iOptions: iosOptions);
+  Future<void> write(String key, String value) async {
+    await storage.write(key: key, value: value);
   }
 
   @override
-  Future<void> deleteAll(AndroidOptions? androidOptions, IOSOptions? iosOptions) async {
-    await storage.deleteAll(aOptions: androidOptions, iOptions: iosOptions);
+  Future<void> deleteAll() async {
+    await storage.deleteAll();
   }
 }

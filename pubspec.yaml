@@ -22,7 +22,8 @@ dependencies:
   intl: ^0.18.0
   card_swiper: ^2.0.4
   timezone: ^0.9.1
-  flutter_secure_storage: ^4.2.1
+  flutter_secure_storage: ^7.0.1
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   integration_test:

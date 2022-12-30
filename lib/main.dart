@@ -72,6 +72,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     _updateTheme();
+    _storageManager.deleteAllOnFirstRun();
 
     _storageManager.readCurrentUser();
   }

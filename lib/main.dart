@@ -46,7 +46,7 @@ class _AppProvidersState extends State<AppProviders> {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => ColorsCubit()),
-          BlocProvider(create: (context) => AuthenticationCubit(context.read<AuthenticationRepository>())),
+          BlocProvider(create: (context) => AuthenticationCubit(context.read<AuthenticationRepository>(), getIt<StorageManager>())),
           BlocProvider(create: (context) => WeatherCubit(context.read<WeatherRepository>())),
         ],
         child: const App(),
@@ -115,6 +115,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
               if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasData) {
                   if (snapshot.data != null) {
+                    context.read<AuthenticationCubit>().ifAlreadyLogged();
                     return WeatherScreen();
                   }
                 } else {

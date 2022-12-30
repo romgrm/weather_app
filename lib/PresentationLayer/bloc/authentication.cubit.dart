@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../core/di/service_locator.dart';
 import '../../core/rest/rest_exception.dart';
 import '../../core/storage/storage.manager.dart';
 import '../../dataLayer/repositories/authentication.repository.dart';
@@ -12,13 +11,11 @@ part 'authentication.state.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   final AuthenticationRepository authenticationRepository;
-  final StorageManager storage = getIt<StorageManager>();
-  AuthenticationCubit(this.authenticationRepository) : super(Loading()) {
-    ifAlreadyLogged();
-  }
+  final StorageManager storage;
+  AuthenticationCubit(this.authenticationRepository, this.storage) : super(Loading());
 
   Future ifAlreadyLogged() async {
-    final userFromCache = await storage.readCurrentUser();
+    UserEntity? userFromCache = await storage.readCurrentUser();
 
     if (userFromCache != null) {
       emit(OnSuccess(user: userFromCache));

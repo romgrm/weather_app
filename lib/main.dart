@@ -119,9 +119,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
                 }
               }
               return const Center(child: CircularProgressIndicator());
-
-              return const SizedBox.shrink();
-              // return const AuthenticationScreen();
             })),
       ),
     );

@@ -23,31 +23,35 @@ class WeatherCubit extends Cubit<WeatherState> {
     DateTime date = DateTime.now();
     emit(const Loading());
 
-    final weatherDays = await weatherRepository.getWeatherForFiveDays();
+    try {
+      final weatherDays = await weatherRepository.getWeatherForFiveDays();
 
-    if (weatherDays != null) {
-      tz.Location timezoneLocation;
-      timezoneLocation = tz.getLocation("Europe/Paris");
+      if (weatherDays != null) {
+        tz.Location timezoneLocation;
+        timezoneLocation = tz.getLocation("Europe/Paris");
 
-      List<WeatherDayEntity?> testWeahters = [];
-      for (var i = 0; i < 5; i++) {
-        testWeahters = weatherDays
-            .map((element) {
-              if ((element.date!.isSameDate(date))) {
-                element.date = TZDateTime.from(element.date!, timezoneLocation);
-                return element;
-              }
-            })
-            .toList()
-            .whereNotNull()
-            .toList();
+        List<WeatherDayEntity?> testWeahters = [];
+        for (var i = 0; i < 5; i++) {
+          testWeahters = weatherDays
+              .map((element) {
+                if ((element.date!.isSameDate(date))) {
+                  element.date = TZDateTime.from(element.date!, timezoneLocation);
+                  return element;
+                }
+              })
+              .toList()
+              .whereNotNull()
+              .toList();
 
-        weatherDaysFiltered.putIfAbsent(date, () => {"${DateFormat("yyyy-MM-dd").format(date)}": List.from(testWeahters)});
-        date = date.add(Duration(days: 1));
+          weatherDaysFiltered.putIfAbsent(date, () => {"${DateFormat("yyyy-MM-dd").format(date)}": List.from(testWeahters)});
+          date = date.add(Duration(days: 1));
+        }
+        emit(OnSuccess(weatherDays: weatherDaysFiltered));
+      } else {
+        emit(OnError(errorMessage: RestException.restErrorUnauthorized));
       }
-      emit(OnSuccess(weatherDays: weatherDaysFiltered));
-    } else {
-      emit(OnError(errorMessage: RestException.restErrorUnauthorized));
+    } on RestException catch (error) {
+      emit(OnError(errorMessage: error.message));
     }
   }
 }

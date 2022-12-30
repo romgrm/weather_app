@@ -15,5 +15,6 @@ Map<String, String> data = {
   // Weather Screen
   "weatherHelloLabel": "Bonjour ",
   "weatherGlobalCardLocationTitle": "Paris",
-  "weatherInfosCardPerceivedTemperatureTitle": "Température\nressentie"
+  "weatherInfosCardPerceivedTemperatureTitle": "Température\nressentie",
+  "weatherErrorHandleLabel": "Oups, une erreur est survenue. Tirer l'écran pour rafraichir"
 };

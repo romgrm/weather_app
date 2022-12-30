@@ -1,21 +1,17 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:weather_app/common/extensions/date.extension.dart';
-import 'package:weather_app/common/extensions/string.extension.dart';
-import 'package:weather_app/common/spacers/spacers.dart';
-import 'package:weather_app/common/widgets/customAppBar.widget.dart';
-import 'package:weather_app/core/storage/storage.manager.dart';
-import 'package:weather_app/presentationLayer/bloc/authentication.cubit.dart';
-import 'package:weather_app/presentationLayer/widgets/global_weather_card.widget.dart';
-import 'package:weather_app/presentationLayer/widgets/weather_infos_card.widget.dart';
-import 'package:weather_app/utils/snackbar.utils.dart';
+import 'package:weather_app/presentationLayer/widgets/error.widget.dart';
+import '../../common/extensions/date.extension.dart';
+import '../../common/extensions/string.extension.dart';
+import '../../common/spacers/spacers.dart';
+import '../../common/widgets/customAppBar.widget.dart';
+import '../bloc/authentication.cubit.dart';
+import '../widgets/global_weather_card.widget.dart';
+import '../widgets/weather_infos_card.widget.dart';
+import '../../utils/snackbar.utils.dart';
 
-import '../../core/di/service_locator.dart';
-import '../../dataLayer/datasources/weather.data.dart';
-import '../../domainLayer/user.entity.dart';
 import '../../localize/localize.dart';
 import '../../theme/colors.cubit.dart';
 import '../bloc/weather.cubit.dart';
@@ -28,8 +24,6 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  String name = "";
-  final StorageManager _storage = getIt<StorageManager>();
   @override
   void initState() {
     super.initState();
@@ -147,7 +141,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       itemCount: weatherDays.length,
                       pagination: SwiperPagination(alignment: Alignment.bottomCenter, margin: EdgeInsets.all(spaceL)));
                 },
-                onError: (errorMessage) => const SizedBox.shrink(),
+                onError: (errorMessage) => const ErrorHandleWidget(),
                 loading: () => Center(
                     child: CircularProgressIndicator(
                   color: context.read<ColorsCubit>().state.getPrimary(),

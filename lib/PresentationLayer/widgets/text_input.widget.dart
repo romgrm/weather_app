@@ -63,7 +63,10 @@ class _TextInputWidgetState extends State<TextInputWidget> {
                       onTap: () => setState(() {
                         obscure = !obscure;
                       }),
-                      child: Icon(obscure ? MdiIcons.eye : MdiIcons.eyeOff),
+                      child: Icon(
+                        obscure ? MdiIcons.eye : MdiIcons.eyeOff,
+                        color: context.read<ColorsCubit>().state.getThirdly(),
+                      ),
                     )
                   : null),
           obscureText: widget.isObscure ? obscure : false,

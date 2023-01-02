@@ -133,8 +133,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                         shrinkWrap: false,
                                         scrollDirection: Axis.horizontal,
                                         children: [
-                                          for (var weathers in weatherDays.values.toList()[index].entries)
-                                            for (var weatherDay in weathers.value) WeatherInfosCardWidget(weatherDayDto: weatherDay),
+                                          for (var allWeathers in weatherDays.values.toList()[index].entries)
+                                            for (var weatherDay in allWeathers.value) WeatherInfosCardWidget(weatherDayDto: weatherDay),
                                         ],
                                       ),
                                     ),

@@ -9,15 +9,11 @@ import '../../domainLayer/weather_day.entity.dart';
 import '../../localize/localize.dart';
 import '../../theme/colors.cubit.dart';
 
-class WeatherInfosCardWidget extends StatefulWidget {
+class WeatherInfosCardWidget extends StatelessWidget {
   final WeatherDayEntity weatherDayDto;
+
   const WeatherInfosCardWidget({super.key, required this.weatherDayDto});
 
-  @override
-  State<WeatherInfosCardWidget> createState() => _WeatherInfosCardWidgetState();
-}
-
-class _WeatherInfosCardWidgetState extends State<WeatherInfosCardWidget> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -29,28 +25,28 @@ class _WeatherInfosCardWidgetState extends State<WeatherInfosCardWidget> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: spaceM),
               child: Text(
-                "${widget.weatherDayDto.date?.toHourAndMinutes()}",
+                "${weatherDayDto.date?.toHourAndMinutes()}",
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 20, color: context.read<ColorsCubit>().state.getPrimary()),
               ),
             ),
-            for (var weather in widget.weatherDayDto.weathers!)
+            for (var weather in weatherDayDto.weathers!)
               Column(
                 children: [Image.network("http://openweathermap.org/img/wn/${weather.icon}@2x.png")],
               ),
             Text(
-              "${widget.weatherDayDto.infos?.temperature?.floor()}°",
+              "${weatherDayDto.infos?.temperature?.floor()}°",
               style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 20, color: context.read<ColorsCubit>().state.getPrimary()),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: spaceM),
               child: Row(
                 children: [
-                  VariantTemp(widget.weatherDayDto.infos?.maximumTemperature, true),
-                  VariantTemp(widget.weatherDayDto.infos?.minimalTemperature, false),
+                  VariantTemp(weatherDayDto.infos?.maximumTemperature, true, context),
+                  VariantTemp(weatherDayDto.infos?.minimalTemperature, false, context),
                 ],
               ),
             ),
-            for (var weather in widget.weatherDayDto.weathers!)
+            for (var weather in weatherDayDto.weathers!)
               Padding(
                 padding: const EdgeInsets.only(bottom: spaceM),
                 child: Text("${weather.description?.capitalize()}"),
@@ -67,7 +63,7 @@ class _WeatherInfosCardWidgetState extends State<WeatherInfosCardWidget> {
                     Padding(
                       padding: const EdgeInsets.only(top: spaceS),
                       child: Text(
-                        "${widget.weatherDayDto.infos?.perceivedTemperature?.floor()}°",
+                        "${weatherDayDto.infos?.perceivedTemperature?.floor()}°",
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 30, color: context.read<ColorsCubit>().state.getPrimary()),
                       ),
                     ),
@@ -81,7 +77,7 @@ class _WeatherInfosCardWidgetState extends State<WeatherInfosCardWidget> {
     );
   }
 
-  Widget VariantTemp(double? temp, bool isMax) {
+  Widget VariantTemp(double? temp, bool isMax, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: spaceS),
       child: Row(

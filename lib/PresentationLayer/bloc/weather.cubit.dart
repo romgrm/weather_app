@@ -18,8 +18,8 @@ class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit(this.weatherRepository) : super(Loading());
 
   Future<void> getWeatherForFiveDays() async {
-    Map<DateTime, Map<String, List<WeatherDayEntity>>> weatherDaysFiltered = {};
-    DateTime date = DateTime.now();
+    Map<DateTime, Map<String, List<WeatherDayEntity>>> weatherDaysMap = {};
+    DateTime currentDate = DateTime.now();
     emit(const Loading());
 
     try {
@@ -29,11 +29,11 @@ class WeatherCubit extends Cubit<WeatherState> {
         tz.Location timezoneLocation;
         timezoneLocation = tz.getLocation("Europe/Paris");
 
-        List<WeatherDayEntity?> testWeahters = [];
+        List<WeatherDayEntity?> weatherDaysFiltered = [];
         for (var i = 0; i < 5; i++) {
-          testWeahters = weatherDays
+          weatherDaysFiltered = weatherDays
               .map((element) {
-                if ((element.date!.isSameDate(date))) {
+                if ((element.date!.isSameDate(currentDate))) {
                   element.date = TZDateTime.from(element.date!, timezoneLocation);
                   return element;
                 }
@@ -42,10 +42,10 @@ class WeatherCubit extends Cubit<WeatherState> {
               .whereNotNull()
               .toList();
 
-          weatherDaysFiltered.putIfAbsent(date, () => {"${DateFormat("yyyy-MM-dd").format(date)}": List.from(testWeahters)});
-          date = date.add(Duration(days: 1));
+          weatherDaysMap.putIfAbsent(currentDate, () => {"${DateFormat("yyyy-MM-dd").format(currentDate)}": List.from(weatherDaysFiltered)});
+          currentDate = currentDate.add(Duration(days: 1));
         }
-        emit(OnSuccess(weatherDays: weatherDaysFiltered));
+        emit(OnSuccess(weatherDays: weatherDaysMap));
       } else {
         emit(OnError(errorMessage: RestException.restErrorUnauthorized));
       }

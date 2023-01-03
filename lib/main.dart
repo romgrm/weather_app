@@ -93,11 +93,6 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     setState(() {});
   }
 
-  // Future<void> setUp() async {
-  //   await _storageManager.deleteAllOnFirstRun();
-  //   // await
-  // }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
